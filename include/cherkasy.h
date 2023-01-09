@@ -4,7 +4,11 @@
 // Image Size     : 44x37 pixels
 // Memory usage   : 3256 bytes
 
+#ifndef CHERKASY_H
+#define CHERKASY_H
+
 #include <TFT_eSPI.h>
+#include "Region.h"
 
 #if defined(__AVR__)
     #include <avr/pgmspace.h>
@@ -14,10 +18,8 @@
     #define PROGMEM
 #endif
 
-extern TFT_eSPI lcd;
-TFT_eSprite cherkasySprite = TFT_eSprite(&lcd);
 
-const unsigned short cherkasyBitmap[1628] PROGMEM={
+const uint16_t cherkasyBitmap[1628] PROGMEM={
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,   // 0x0010 (16) pixels
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,   // 0x0020 (32) pixels
 0x0000, 0xFFFF, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,   // 0x0030 (48) pixels
@@ -121,15 +123,7 @@ const unsigned short cherkasyBitmap[1628] PROGMEM={
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,   // 0x0650 (1616) pixels
 };
 
-void setUpCherkasy() {
+extern TFT_eSPI lcd;
+Region cherkasy(&lcd, 105, 49, 44, 37, cherkasyBitmap);
 
-  const unsigned short cherkasyLocSize[4] = {44,37,60,60};
-  cherkasySprite.createSprite(cherkasyLocSize[0],cherkasyLocSize[1]);
-  cherkasySprite.setSwapBytes(true);
-  cherkasySprite.pushImage(0,0,cherkasyLocSize[0],cherkasyLocSize[1],cherkasyBitmap);
-  
-  cherkasySprite.pushSprite(cherkasyLocSize[2],cherkasyLocSize[3], TFT_BLACK);
-}
-
-// cherkasySprite.pushImage(0,0,cherkasyLocSize[0],cherkasyLocSize[1],cherkasy);
-// cherkasySprite.pushSprite(cherkasyLocSize[2],cherkasyLocSize[3]);
+#endif // CHERKASY_H

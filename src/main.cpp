@@ -1,11 +1,10 @@
 #include <Arduino.h>
 #include <TFT_eSPI.h>
 
-#include "cherkasy.h"
+#include "regions_bitmap.h"
 #include "Region.h"
 
 TFT_eSPI lcd = TFT_eSPI();
-extern TFT_eSprite cherkasySprite;
 int i = 0;
 
 void setup() {
@@ -14,14 +13,18 @@ void setup() {
   lcd.setSwapBytes(true);
   lcd.fillScreen(TFT_BLACK);
 
-  Region cherkasy(&lcd, 60,60,44,37, cherkasyBitmap);
+  // create full map
+  TFT_eSprite ukraineSprite(&lcd);
+  ukraineSprite.createSprite(254, 170);
+  ukraineSprite.setSwapBytes(true);
+  ukraineSprite.pushImage(0, 0, 254, 170, ukraineBitmap);
+  ukraineSprite.pushSprite(0, 0, TFT_BLACK);
+  ukraineSprite.deleteSprite();
 
-  // setUpCherkasy();
-  // cherkasySprite.setColorDepth(1);
+  delay(1000);
   
   Serial.begin(9600);
   Serial.println("start");
-  // lcd.pushImage(0, 0, 254, 170, map_w);
 }
 
 void loop() {
@@ -29,7 +32,12 @@ void loop() {
   Serial.print("loop ");
   Serial.println(i);
 
-  // cherkasySprite.pushSprite(0,0, TFT_BLACK);
+  delay(1000);
+  cherkasy.raiseAlert();
+  chernihiv.raiseAlert();
+  delay(1000);
+  cherkasy.removeAlert();
+  chernihiv.removeAlert();
 
-  delay(500);
+  
 }

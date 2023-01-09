@@ -2,28 +2,29 @@
 
 Region::Region(TFT_eSPI *lcd, 
         const uint16_t coordinates_x, const uint16_t coordinates_y, 
-        const uint8_t size_x, const uint8_t size_y, 
-        const unsigned short *bitmap) 
+        const uint16_t size_x, const uint16_t size_y, 
+        const uint16_t *flash_bitmap) 
         : lcd(lcd), alert(false),
-        coordinates(coordinates_x, coordinates_y),
-        size(size_x, size_y) 
-{
-    sprite = new TFT_eSprite(lcd);
+        coordinates_x(coordinates_x), coordinates_y(coordinates_y),
+        size_x(size_x), size_y(size_y)
+{   
 
+    sprite = new TFT_eSprite(lcd);
+    bitmap = flash_bitmap;
     sprite->createSprite(size_x, size_y);
     sprite->setSwapBytes(true);
     sprite->pushImage(0, 0, size_x, size_y, bitmap);
     
     sprite->pushSprite(coordinates_x, coordinates_y, TFT_BLACK);
+
+    sprite->deleteSprite();
 }
 
 Region::~Region() {
-    sprite->deleteSprite();
     delete sprite;
 }
 
 void Region::setCoordinates(uint16_t x, uint16_t y) {
-    coordinates = Pair<uint16_t>(x,y);
     // TODO
 }
 
@@ -32,11 +33,43 @@ bool Region::isAlert() {
 }
 
 void Region::raiseAlert() {
+    if (alert) {
+        return;
+    }
     alert = true;
-    // TODO
+
+    uint16_t *red_bitmap = new uint16_t [size_x*size_y];
+
+    for (uint16_t i = 0; i < size_x*size_y; i++) {
+        if (bitmap[i] == TFT_WHITE) {
+            red_bitmap[i] = TFT_RED;
+        }
+        else {
+            red_bitmap[i] = TFT_BLACK;
+        }
+    }
+    sprite->createSprite(size_x, size_y);
+    sprite->setSwapBytes(true);
+    sprite->pushImage(0, 0, size_x, size_y, red_bitmap);
+    
+    sprite->pushSprite(coordinates_x, coordinates_y, TFT_BLACK);
+
+    sprite->deleteSprite();
+
+    delete [] red_bitmap;
 }
 
 void Region::removeAlert() {
+    if (!alert) {
+        return;
+    }
     alert = false;
-    // TODO
+
+    sprite->createSprite(size_x, size_y);
+    sprite->setSwapBytes(true);
+    sprite->pushImage(0, 0, size_x, size_y, bitmap);
+    
+    sprite->pushSprite(coordinates_x, coordinates_y, TFT_BLACK);
+
+    sprite->deleteSprite();
 }

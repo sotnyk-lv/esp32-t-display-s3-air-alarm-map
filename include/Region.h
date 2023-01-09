@@ -1,25 +1,20 @@
+#ifndef REGION_H
+#define REGION_H
+
 #include <TFT_eSPI.h>
 #include <cstdint>
+#include <algorithm>
+#include <iterator>
 
-template <class T>
-struct Pair {
-    T x;
-    T y;
-
-    Pair(T x, T y) {
-        x = x;
-        y = y;
-    }
-};
 
 class Region {
 
 public:
     // TODO check if correct and fix
     Region(TFT_eSPI *lcd, 
-        uint16_t coordinates_x, uint16_t coordinates_y, 
-        uint8_t size_x, uint8_t size_y,
-        const unsigned short *bitmap);
+        const uint16_t coordinates_x, const uint16_t coordinates_y, 
+        const uint16_t size_x, const uint16_t size_y,
+        const uint16_t *bitmap);
 
     // TODO check if correct and fix
     ~Region();
@@ -29,20 +24,26 @@ public:
 
     bool isAlert();
 
-    // TODO
     void raiseAlert();
-    // TODO
     void removeAlert();
 
     // someTimeFormat lastAlert(); 
 
 private:
+
+    uint16_t coordinates_x;
+    uint16_t coordinates_y;
+    uint16_t size_x;
+    uint16_t size_y;
+
     TFT_eSPI *lcd;
     TFT_eSprite *sprite;
 
-    char name[15];
-    bool alert;
+    // char name[15];
 
-    Pair<uint16_t> coordinates;
-    Pair<uint8_t> size;
+    const uint16_t *bitmap;
+
+    bool alert = false;
 };
+
+#endif // REGION_H
