@@ -33,9 +33,6 @@ bool Region::isAlert() {
 }
 
 void Region::raiseAlert() {
-    if (alert) {
-        return;
-    }
     alert = true;
 
     uint16_t *red_bitmap = new uint16_t [size_x*size_y];
@@ -60,9 +57,6 @@ void Region::raiseAlert() {
 }
 
 void Region::removeAlert() {
-    if (!alert) {
-        return;
-    }
     alert = false;
 
     sprite->createSprite(size_x, size_y);
