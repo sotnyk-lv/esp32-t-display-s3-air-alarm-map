@@ -25,20 +25,28 @@ void processPacket(String data) {
       int currentRegion = data.substring(2).toInt();
       Serial.print("currentRegion: ");
       Serial.print(currentRegion);
-      int currentState = data.substring(data.indexOf("=")+1).toInt();
+      Serial.print(data.substring(data.indexOf("=")+1, data.indexOf("=")+2));
+      Serial.print(" ");
+      int currentState = data.substring(data.indexOf("=")+1, data.indexOf("=")+2).toInt();
       Serial.print(" currentState: ");
       Serial.print(currentState);
+
+      if (currentRegion > 24 || currentRegion < 1) {
+        Serial.println(" brrr");
+        return ;
+      }
+
       if (currentState) {
         regions[currentRegion]->raiseAlert();
-        Serial.println('raiseAlert');
+        Serial.println(" raiseAlert");
       }
       else {
         regions[currentRegion]->removeAlert();
-        Serial.println('removeAlert');
+        Serial.println(" removeAlert");
       }
 
     }
-    Serial.println('/n');
+    Serial.println("\n");
 }
 
 void handleData(String data) {
@@ -66,7 +74,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("start");
 
-  WiFi.begin(ssid, password);
+  WiFi.begin(SSID, PASSWORD);
     Serial.println("\nConnecting");
 
     while(WiFi.status() != WL_CONNECTED){
@@ -89,7 +97,7 @@ void setup() {
     client.write(API_KEY);
 
     for (int i=0; i<25; ++i) {
-      regions[i]->removeAlert();
+      regions[i]->setUnknown();
     }
 }
 

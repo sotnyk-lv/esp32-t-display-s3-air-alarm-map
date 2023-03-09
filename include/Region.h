@@ -6,44 +6,27 @@
 #include <algorithm>
 #include <iterator>
 
+#include "SingleColorBitmap.h"
 
-class Region {
+class Region : protected SingleColorBitmap{
 
 public:
-    // TODO check if correct and fix
-    Region(TFT_eSPI *lcd, 
-        const uint16_t coordinates_x, const uint16_t coordinates_y, 
-        const uint16_t size_x, const uint16_t size_y,
-        const uint16_t *bitmap);
+    using SingleColorBitmap::SingleColorBitmap;
+    
+    // B(int x) : A(x) { }
 
-    // TODO check if correct and fix
-    ~Region();
+    int isAlert();
 
-    // TODO does I need it?
-    void setCoordinates(uint16_t x, uint16_t y);
-
-    bool isAlert();
-
+    void setUnknown();
     void raiseAlert();
     void removeAlert();
+
 
     // someTimeFormat lastAlert(); 
 
 private:
 
-    uint16_t coordinates_x;
-    uint16_t coordinates_y;
-    uint16_t size_x;
-    uint16_t size_y;
-
-    TFT_eSPI *lcd;
-    TFT_eSprite *sprite;
-
-    // char name[15];
-
-    const uint16_t *bitmap;
-
-    bool alert = false;
+    int state = -1;
 };
 
 #endif // REGION_H

@@ -2,8 +2,8 @@
 #define SECRETS_H
 
 
-const char* ssid = "WIFI_SSID";
-const char* password = "WIFI_PASSWORD";
+#define SSID "WIFI_SSID"
+#define PASSWORD "WIFI_PASSWORD"
 
 #define HOST "tcp.alerts.com.ua"
 #define PORT 1024
