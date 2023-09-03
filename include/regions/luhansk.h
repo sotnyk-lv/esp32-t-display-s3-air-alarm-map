@@ -114,6 +114,6 @@ const unsigned short luhanskBitmap[1457] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region luhansk(&lcd, 220, 52, 31, 47, luhanskBitmap);
+inline Region luhansk(&lcd, 220, 52, 31, 47, luhanskBitmap);
 
 #endif // LUHANSK_H

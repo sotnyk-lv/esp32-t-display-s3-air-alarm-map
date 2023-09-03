@@ -103,6 +103,6 @@ const unsigned short mykolaivBitmap[1287] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region mykolaiv(&lcd, 114, 92, 39, 33, mykolaivBitmap);
+inline Region mykolaiv(&lcd, 114, 92, 39, 33, mykolaivBitmap);
 
 #endif // MYKOLAIV_H

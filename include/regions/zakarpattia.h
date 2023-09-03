@@ -71,6 +71,6 @@ const unsigned short zakarpattiaBitmap[792] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region zakarpattia(&lcd, 1, 74, 33, 24, zakarpattiaBitmap);
+inline Region zakarpattia(&lcd, 1, 74, 33, 24, zakarpattiaBitmap);
 
 #endif // ZAKARPATTIA_H

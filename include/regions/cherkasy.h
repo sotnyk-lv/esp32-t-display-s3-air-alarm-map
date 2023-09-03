@@ -123,6 +123,6 @@ const uint16_t cherkasyBitmap[1628] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region cherkasy(&lcd, 105, 49, 44, 37, cherkasyBitmap);
+inline Region cherkasy(&lcd, 105, 49, 44, 37, cherkasyBitmap);
 
 #endif // CHERKASY_H

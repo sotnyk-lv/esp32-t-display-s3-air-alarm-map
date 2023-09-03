@@ -176,6 +176,6 @@ const unsigned short odesaBitmap[2460] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region odesa(&lcd, 86, 92, 41, 60, odesaBitmap);
+inline Region odesa(&lcd, 86, 92, 41, 60, odesaBitmap);
 
 #endif // ODESA_H

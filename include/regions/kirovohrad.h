@@ -127,6 +127,6 @@ const unsigned short kirovohradBitmap[1680] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region kirovohrad(&lcd, 107, 71, 56, 30, kirovohradBitmap);
+inline Region kirovohrad(&lcd, 107, 71, 56, 30, kirovohradBitmap);
 
 #endif // KIROVOHRAD_H

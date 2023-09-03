@@ -142,6 +142,6 @@ const unsigned short kyivBitmap[1911] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region kyiv(&lcd, 100, 21, 39, 49, kyivBitmap);
+inline Region kyiv(&lcd, 100, 21, 39, 49, kyivBitmap);
 
 #endif // KYIV_H

@@ -117,6 +117,6 @@ const unsigned short zhytomyrBitmap[1530] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region zhytomyr(&lcd, 71, 17, 34, 45, zhytomyrBitmap);
+inline Region zhytomyr(&lcd, 71, 17, 34, 45, zhytomyrBitmap);
 
 #endif // ZHYTOMYR_H

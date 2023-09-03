@@ -115,6 +115,6 @@ const unsigned short lvivBitmap[1480] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region lviv(&lcd, 8, 40, 37, 40, lvivBitmap);
+inline Region lviv(&lcd, 8, 40, 37, 40, lvivBitmap);
 
 #endif // LVIV_H

@@ -96,6 +96,6 @@ const unsigned short volynBitmap[1188] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region volyn(&lcd, 22, 10, 33, 36, volynBitmap);
+inline Region volyn(&lcd, 22, 10, 33, 36, volynBitmap);
 
 #endif // VOLYN_H

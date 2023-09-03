@@ -126,6 +126,6 @@ const unsigned short poltavaBitmap[1665] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region poltava(&lcd, 140, 43, 45, 37, poltavaBitmap);
+inline Region poltava(&lcd, 140, 43, 45, 37, poltavaBitmap);
 
 #endif // POLTAVA_H

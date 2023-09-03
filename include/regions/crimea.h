@@ -146,6 +146,6 @@ const unsigned short crimeaBitmap[1995] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region crimea(&lcd, 144, 134, 57, 35, crimeaBitmap);
+inline Region crimea(&lcd, 144, 134, 57, 35, crimeaBitmap);
 
 #endif // CRIMEA_H

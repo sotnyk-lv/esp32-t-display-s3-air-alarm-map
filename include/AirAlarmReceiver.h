@@ -1,26 +1,42 @@
-#ifndef AIRALARMRECEIVER_H
-#define AIRALARMRECEIVER_H
+#ifndef AIR_ALARM_RECEIVER_H
+#define AIR_ALARM_RECEIVER_H
 
 #include <WiFi.h>
 #include <WiFiClient.h>
+#include <vector>
 
 #include "secrets.h"
+// #include "AirAlarmMap.h"
+#include "RegionState.h"
+// #include "regions_bitmap.h"
 
-class WiFiConnection {
+
+#define HOST "tcp.alerts.com.ua"
+#define PORT 1024
+
+class AirRaidAlertApi {
 
 public:
-    WiFiConnection();
+    AirRaidAlertApi();
 
-    ~WiFiConnection();
+    ~AirRaidAlertApi();
 
-    void connectWiFi(const char* ssid, const char* password);
+    void getInitialData();
 
-    void connectAPI();
+    void connectApi();
 
-private:
+    static int connectWiFi(const char* ssid, const char* password,  int maxTries = 600);
+
+    std::vector<RegionState> handleData(String data);
+
+    RegionState processPacket(String data);
+
+// private:
 
     WiFiClient client;
 
 };
 
-#endif // AIRALARMRECEIVER_H
+
+
+#endif // AIR_ALARM_RECEIVER_H

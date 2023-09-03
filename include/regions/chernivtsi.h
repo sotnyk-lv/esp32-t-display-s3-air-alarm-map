@@ -64,6 +64,6 @@ const unsigned short chernivtsiBitmap[646] PROGMEM={
 
 
 extern TFT_eSPI lcd;
-Region chernivtsi(&lcd, 40, 83, 34, 19, chernivtsiBitmap);
+inline Region chernivtsi(&lcd, 40, 83, 34, 19, chernivtsiBitmap);
 
 #endif // CHERNIVTSI_H

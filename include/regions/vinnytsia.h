@@ -102,6 +102,6 @@ const unsigned short vinnytsiaBitmap[1295] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region vinnytsia(&lcd, 74, 57, 35, 37, vinnytsiaBitmap);
+inline Region vinnytsia(&lcd, 74, 57, 35, 37, vinnytsiaBitmap);
 
 #endif // VINNYTSIA_H

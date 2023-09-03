@@ -134,6 +134,6 @@ const unsigned short chernihivBitmap[1800] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region chernihiv(&lcd, 117, 1, 40, 45, chernihivBitmap);
+inline Region chernihiv(&lcd, 117, 1, 40, 45, chernihivBitmap);
 
 #endif // CHERNIHIV_H

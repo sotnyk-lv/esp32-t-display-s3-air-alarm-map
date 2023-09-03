@@ -135,6 +135,6 @@ const unsigned short sumyBitmap[1813] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region sumy(&lcd, 150, 2, 37, 49, sumyBitmap);
+inline Region sumy(&lcd, 150, 2, 37, 49, sumyBitmap);
 
 #endif // SUMY_H

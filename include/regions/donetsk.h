@@ -125,6 +125,6 @@ const unsigned short donetskBitmap[1632] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region donetsk(&lcd, 201, 71, 34, 48, donetskBitmap);
+inline Region donetsk(&lcd, 201, 71, 34, 48, donetskBitmap);
 
 #endif // DONETSK_H

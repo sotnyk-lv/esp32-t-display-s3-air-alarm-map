@@ -83,6 +83,6 @@ const unsigned short khmelnytskyiBitmap[989] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region khmelnytskyi(&lcd, 57, 41, 23, 43, khmelnytskyiBitmap);
+inline Region khmelnytskyi(&lcd, 57, 41, 23, 43, khmelnytskyiBitmap);
 
 #endif // KHMELNYTSKYI_H

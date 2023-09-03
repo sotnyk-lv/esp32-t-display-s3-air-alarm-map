@@ -86,6 +86,6 @@ const unsigned short frankivskBitmap[1008] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region frankivsk(&lcd, 21, 64, 28, 36, frankivskBitmap);
+inline Region frankivsk(&lcd, 21, 64, 28, 36, frankivskBitmap);
 
 #endif // FRANKIVSK_H

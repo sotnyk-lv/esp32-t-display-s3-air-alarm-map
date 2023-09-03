@@ -110,6 +110,6 @@ const unsigned short khersonBitmap[1395] PROGMEM={
 0xFFFF};
 
 extern TFT_eSPI lcd;
-Region kherson(&lcd, 134, 106, 45, 31, khersonBitmap);
+inline Region kherson(&lcd, 134, 106, 45, 31, khersonBitmap);
 
 #endif // KHERSON_H

@@ -65,6 +65,6 @@ const unsigned short ternopilBitmap[700] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region ternopil(&lcd, 37, 48, 20, 35, ternopilBitmap);
+inline Region ternopil(&lcd, 37, 48, 20, 35, ternopilBitmap);
 
 #endif // TERNOPIL_H

@@ -114,6 +114,6 @@ const unsigned short rivneBitmap[1476] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region rivne(&lcd, 42, 11, 36, 41, rivneBitmap);
+inline Region rivne(&lcd, 42, 11, 36, 41, rivneBitmap);
 
 #endif // RIVNE_H

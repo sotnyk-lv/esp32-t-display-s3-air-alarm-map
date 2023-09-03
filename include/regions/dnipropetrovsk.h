@@ -137,6 +137,6 @@ const unsigned short dnipropetrovskBitmap[1836] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region dnipropetrovsk(&lcd, 151, 72, 54, 34, dnipropetrovskBitmap);
+inline Region dnipropetrovsk(&lcd, 151, 72, 54, 34, dnipropetrovskBitmap);
 
 #endif // DNIPROPETROVSK_H

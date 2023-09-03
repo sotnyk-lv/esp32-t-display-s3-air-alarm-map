@@ -130,6 +130,6 @@ const unsigned short kharkivBitmap[1716] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region kharkiv(&lcd, 177, 44, 44, 39, kharkivBitmap);
+inline Region kharkiv(&lcd, 177, 44, 44, 39, kharkivBitmap);
 
 #endif // KHARKIV_H

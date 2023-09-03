@@ -114,6 +114,6 @@ const unsigned short zaporizhzhiaBitmap[1482] PROGMEM={
 };
 
 extern TFT_eSPI lcd;
-Region zaporizhzhia(&lcd, 169, 93, 39, 38, zaporizhzhiaBitmap);
+inline Region zaporizhzhia(&lcd, 169, 93, 39, 38, zaporizhzhiaBitmap);
 
 #endif // ZAPORIZHZHIA_H
